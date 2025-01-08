@@ -1,9 +1,16 @@
 namespace Models;
 
 public class Veiculo {
-    public string placa { get; set; }
-    public string marca { get; set; }
-    public string cor { get; set; }
-    public DateTime entrada { get; set; }
-    public DateTime saida { get; set; }
+    public string Placa { get; set; }
+    public string Marca { get; set; }
+    public string Cor { get; set; }
+    public DateTime Entrada { get; set; }
+    public DateTime Saida { get; set; }
+
+    public Veiculo (string placa, string marca, string cor, DateTime entrada) {
+        Placa = placa;
+        Marca = marca;
+        Cor = cor;
+        Entrada = entrada;
+    }
 }

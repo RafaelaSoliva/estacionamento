@@ -1,10 +1,10 @@
 namespace Models;
 
 public class LivroCaixa {
-    public List<string> Registro { get; set; }
-    public decimal TotalRecebido { get; set; } = 0;
-    public decimal TotalDespesas { get; set; } = 0;
-    public decimal ValorEmCaixa { get; set; } = 0;
+    private List<string> Registro { get; set; }
+    private decimal TotalRecebido { get; set; } = 0;
+    private decimal TotalDespesas { get; set; } = 0;
+    private decimal ValorEmCaixa { get; set; } = 0;
 
     public LivroCaixa () {
         Registro = new List<string> ();
@@ -22,6 +22,7 @@ public class LivroCaixa {
         TotalDespesas = TotalDespesas - valorDespesa;
         ValorEmCaixa = ValorEmCaixa - valorDespesa;
     }
+
     public void RegistrarRecebimentoPorVeiculoEstacionado (decimal valorRecebido) {
         // Registra a alteração dos valores
         SomarValor(valorRecebido);

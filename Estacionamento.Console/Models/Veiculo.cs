@@ -14,6 +14,10 @@ public class Veiculo {
         Entrada = DateTime.Now;
     }
 
+    public void ExibirVeiculo () {
+        Console.WriteLine($"| Placa: {Placa} | Marca: {Marca} | Cor: {Cor} |");
+    }
+
     public decimal CalcularValorAReceber (decimal PrecoInicial, decimal PrecoPorHora) {
         // Registra o horário atual como horário de saída
         Saida = DateTime.Now;

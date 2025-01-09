@@ -18,7 +18,7 @@ public class Veiculo {
         Console.WriteLine($"| Placa: {Placa} | Marca: {Marca} | Cor: {Cor} |");
     }
 
-    public decimal CalcularValorAReceber (decimal PrecoInicial, decimal PrecoPorHora) {
+    public decimal CalcularValorAReceber (decimal precoInicial, decimal precoPorHora) {
         // Registra o horário atual como horário de saída
         Saida = DateTime.Now;
 
@@ -26,7 +26,7 @@ public class Veiculo {
         TimeSpan timeSpan = Saida - Entrada;
 
         // Calcula o valor a receber com base no tempo estacionado
-        decimal ValorAReceber = PrecoInicial + (PrecoPorHora * timeSpan.Hours);
+        decimal ValorAReceber = precoInicial + (precoPorHora * timeSpan.Hours);
 
         return ValorAReceber;
     }

@@ -22,19 +22,6 @@ public class LivroCaixa {
         TotalDespesas = TotalDespesas - valorDespesa;
         ValorEmCaixa = ValorEmCaixa - valorDespesa;
     }
-
-    public void RegistrarDespesa (decimal valorDespesa, string descricao) {
-        // Registra a alteração dos valores
-        SubtrairValor (valorDespesa);
-
-        // Registra o horário do recebimento
-        DateTime dataRecibo = DateTime.Now;
-
-        // Adiciona registro ao LivroCaixa
-        string registro = $"|  {dataRecibo}  |  Valor: {-valorDespesa}  |  Descrição: {descricao} |";
-        Registro.Add(registro);
-    }
-
     public void RegistrarRecebimentoPorVeiculoEstacionado (decimal valorRecebido) {
         // Registra a alteração dos valores
         SomarValor(valorRecebido);
@@ -56,6 +43,18 @@ public class LivroCaixa {
 
         // Adiciona registro ao LivroCaixa
         string registro = $"|  {dataRecibo}  |  Valor: {valorRecebido}  |  Descrição: {descricao} |";
+        Registro.Add(registro);
+    }
+
+    public void RegistrarDespesa (decimal valorDespesa, string descricao) {
+        // Registra a alteração dos valores
+        SubtrairValor (valorDespesa);
+
+        // Registra o horário do recebimento
+        DateTime dataRecibo = DateTime.Now;
+
+        // Adiciona registro ao LivroCaixa
+        string registro = $"|  {dataRecibo}  |  Valor: {-valorDespesa}  |  Descrição: {descricao} |";
         Registro.Add(registro);
     }
 

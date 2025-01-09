@@ -2,7 +2,7 @@ namespace Models;
 
 public class LivroCaixa {
     private List<string> Registro { get; set; }
-    private decimal TotalRecebido { get; set; } = 0;
+    private decimal TotalReceitas { get; set; } = 0;
     private decimal TotalDespesas { get; set; } = 0;
     private decimal ValorEmCaixa { get; set; } = 0;
 
@@ -14,7 +14,7 @@ public class LivroCaixa {
     }
 
     private void SomarValor (decimal valorRecebido) {
-        TotalRecebido = TotalRecebido + valorRecebido;
+        TotalReceitas = TotalReceitas + valorRecebido;
         ValorEmCaixa = ValorEmCaixa + valorRecebido;
     }
 
@@ -64,7 +64,7 @@ public class LivroCaixa {
             Console.WriteLine(registro);
         }
 
-        Console.WriteLine($"\nGanhos totais: {TotalRecebido}");
+        Console.WriteLine($"\nGanhos totais: {TotalReceitas}");
         Console.WriteLine($"Despesas totais: {TotalDespesas}");
         Console.WriteLine($"\nValor em caixa: {ValorEmCaixa}");
     }

@@ -60,8 +60,12 @@ public class LivroCaixa {
     }
 
     public void Exibir () {
-        foreach (var registro in Registro) {
-            Console.WriteLine(registro);
+        if (Registro.Count <= 1) {
+            Console.WriteLine("\nAinda não há registros!");
+        } else {
+            foreach (var registro in Registro) {
+                Console.WriteLine(registro);
+            }
         }
 
         Console.WriteLine($"\nReceitas totais: {TotalReceitas}");

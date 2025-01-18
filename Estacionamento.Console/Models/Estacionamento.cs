@@ -29,7 +29,7 @@ public class Estacionamento {
     }
 
     private void EntradaPrecoPorHora () {
-        Console.WriteLine("Informe o preço a ser cobrado por hora:");
+        Console.WriteLine("Informe o preço adicional por hora:");
         string entradaUsuario = Console.ReadLine();
         bool sucesso = Decimal.TryParse(entradaUsuario, out decimal precoPorHora);
 
@@ -37,7 +37,7 @@ public class Estacionamento {
             PrecoPorHora = precoPorHora;
         } else {
             Console.WriteLine("\nValor inválido!");
-            Console.WriteLine("Utilize o formato xx.yy\n");
+            Console.WriteLine("Utilize o formato xx,yy\n");
             EntradaPrecoPorHora();
         }
     }
@@ -54,21 +54,22 @@ public class Estacionamento {
         // Verifica se a placa inserida já pertence a um veículo estacionado
         if (!VeiculoEstaEstacionado(placa)) {
             // Recebe os dados restantes
-            Console.WriteLine("Marca: ");
+            Console.WriteLine("\nMarca: ");
             string marca = Console.ReadLine();
-            Console.WriteLine("Cor: ");
+            Console.WriteLine("\nCor: ");
             string cor = Console.ReadLine();
 
             // Adiciona o veículo
             Veiculo veiculoAdicionado = new Veiculo (placa, marca, cor);
             VeiculosEstacionados.Add(veiculoAdicionado);
-            Console.WriteLine("Veículo registrado com sucesso!");
+            Console.WriteLine("\nVeículo registrado com sucesso!\n");
             veiculoAdicionado.Exibir();
 
             // Verifica se o usuário deseja registrar outro veículo e chama o método caso necessário
-            Console.WriteLine("Registrar outro veiculo? (s/n)");
+            Console.WriteLine("\nRegistrar outro veiculo? (s/n)");
             string resposta = Console.ReadLine();
             if (resposta == "s" || resposta == "S") {
+                Console.Clear();
                 AdicionarVeiculo();
             }
 
@@ -76,6 +77,7 @@ public class Estacionamento {
             Console.WriteLine("Veículo já registrado! Registrar outra placa? (s/n)");
             string resposta = Console.ReadLine();
             if (resposta == "s" || resposta == "S") {
+                Console.Clear();
                 AdicionarVeiculo();
             }
         }
@@ -94,7 +96,7 @@ public class Estacionamento {
 
             // Calcula o valor a receber e exibe
             decimal valorAReceber = VeiculosEstacionados[posicaoVeiculo].CalcularValorAReceber(PrecoInicial, PrecoPorHora);
-            Console.WriteLine($"Confirmar pagamento de R$ {valorAReceber}? - Pressione Enter");
+            Console.WriteLine($"\nConfirmar pagamento de R$ {valorAReceber}? - Pressione Enter");
             Console.ReadLine();
             
             // Registra a receita no livro caixa
@@ -107,9 +109,10 @@ public class Estacionamento {
             VeiculosEstacionados.Remove(VeiculosEstacionados[posicaoVeiculo]);
 
         } else { // Caso a placa inserida não pertença a um veículo estacionado
-            Console.WriteLine("Veículo não encontrado! Tentar novamente? (s/n)");
+            Console.WriteLine("\nVeículo não encontrado! Tentar novamente? (s/n)");
             string resposta = Console.ReadLine();
             if (resposta == "s" || resposta == "S") {
+                Console.Clear();
                 RemoverVeiculo();
             }
         }

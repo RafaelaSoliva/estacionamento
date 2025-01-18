@@ -14,7 +14,7 @@ public class Veiculo {
         Entrada = DateTime.Now;
     }
 
-    public void ExibirVeiculo () {
+    public void Exibir () {
         Console.WriteLine($"| Placa: {Placa} | Marca: {Marca} | Cor: {Cor} |");
     }
 

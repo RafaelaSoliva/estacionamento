@@ -22,8 +22,15 @@ public class Veiculo {
         // Registra o horário atual como horário de saída
         Saida = DateTime.Now;
 
+        // Exibe os horários de entrada e saída
+        Console.WriteLine($"Entrada: {Entrada}");
+        Console.WriteLine($"Saída: {Saida}");
+
          // Calcula a diferença de horas entre a entrada e a saída
         TimeSpan timeSpan = Saida - Entrada;
+
+        // Exibe o tempo estacionado
+        Console.WriteLine($"Tempo de estacionamento: {timeSpan.Hours}");
 
         // Calcula o valor a receber com base no tempo estacionado
         decimal ValorAReceber = precoInicial + (precoPorHora * timeSpan.Hours);

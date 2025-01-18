@@ -9,8 +9,8 @@ public class Veiculo {
 
     public Veiculo (string placa, string marca, string cor) {
         Placa = placa.ToUpper();
-        Marca = marca;
-        Cor = cor;
+        Marca = marca.ToUpper();
+        Cor = cor.ToUpper();
         Entrada = DateTime.Now;
     }
 

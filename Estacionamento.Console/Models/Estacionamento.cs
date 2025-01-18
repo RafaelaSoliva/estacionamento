@@ -29,7 +29,7 @@ public class Estacionamento {
     }
 
     private void EntradaPrecoPorHora () {
-        Console.WriteLine("Informe o preço adicional por hora:");
+        Console.WriteLine("\nInforme o preço adicional por hora no formato xx,yy:");
         string entradaUsuario = Console.ReadLine();
         bool sucesso = Decimal.TryParse(entradaUsuario, out decimal precoPorHora);
 
@@ -129,12 +129,12 @@ public class Estacionamento {
         }
     }
 
-    public void RegistrarReceita (decimal valorReceita, string descricao) {
-        LivroCaixa.RegistrarOutraReceita (valorReceita, descricao);
+    public void RegistrarReceita () {
+        LivroCaixa.RegistrarOutraReceita();
     }
 
-    public void RegistrarDespesa (decimal valorDespesa, string descricao) {
-        LivroCaixa.RegistrarDespesa(valorDespesa, descricao);
+    public void RegistrarDespesa () {
+        LivroCaixa.RegistrarDespesa();
     }
 
     public void ExibirLivroCaixa () {

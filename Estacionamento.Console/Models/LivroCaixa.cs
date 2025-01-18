@@ -35,24 +35,50 @@ public class LivroCaixa {
         Registro.Add(registro);
     }
 
-    public void RegistrarOutraReceita (decimal valorReceita, string descricao) {
+    public void RegistrarOutraReceita () {
+        Console.WriteLine("Insira o valor da receita no formato xx,yy:");
+        bool valorEValido = Decimal.TryParse(Console.ReadLine(), out decimal valorReceita);
+
+        if (!valorEValido) {
+            Console.WriteLine("Valor inválido!");
+            Console.WriteLine("Utilize o formato xx,yy");
+            RegistrarOutraReceita();
+        }
+
         // Registra a alteração dos valores
         SomarValor(valorReceita);
 
         // Registra o horário do recebimento
         DateTime dataRecibo = DateTime.Now;
 
+        // Recebe a descrição
+        Console.WriteLine("\nInsira a descrição da receita: ");
+        string descricao = Console.ReadLine();
+
         // Adiciona registro ao LivroCaixa
         string registro = $"|  {dataRecibo}  |  Valor: {valorReceita}  |  Descrição: {descricao} |";
         Registro.Add(registro);
     }
 
-    public void RegistrarDespesa (decimal valorDespesa, string descricao) {
+    public void RegistrarDespesa () {
+        Console.WriteLine("Insira o valor da despesa no formato xx,yy:");
+        bool valorEValido = Decimal.TryParse(Console.ReadLine(), out decimal valorDespesa);
+
+        if (!valorEValido) {
+            Console.WriteLine("Valor inválido!");
+            Console.WriteLine("Utilize o formato xx,yy");
+            RegistrarOutraReceita();
+        }
+        
         // Registra a alteração dos valores
         SubtrairValor (valorDespesa);
 
-        // Registra o horário do recebimento
+        // Registra o horário da despesa
         DateTime dataRecibo = DateTime.Now;
+
+        // Recebe a descrição
+        Console.WriteLine("\nInsira a descrição da despesa:");
+        string descricao = Console.ReadLine();
 
         // Adiciona registro ao LivroCaixa
         string registro = $"|  {dataRecibo}  |  Valor: {-valorDespesa}  |  Descrição: {descricao} |";

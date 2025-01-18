@@ -23,7 +23,7 @@ public class LivroCaixa {
         ValorEmCaixa = ValorEmCaixa - valorDespesa;
     }
 
-    public void RegistrarRecebimentoPorVeiculoEstacionado (decimal valorReceita) {
+    public void RegistrarReceitaPorVeiculoEstacionado (decimal valorReceita) {
         // Registra a alteração dos valores
         SomarValor(valorReceita);
 
@@ -35,7 +35,7 @@ public class LivroCaixa {
         Registro.Add(registro);
     }
 
-    public void RegistrarOutroRecebimento (decimal valorReceita, string descricao) {
+    public void RegistrarOutraReceita (decimal valorReceita, string descricao) {
         // Registra a alteração dos valores
         SomarValor(valorReceita);
 

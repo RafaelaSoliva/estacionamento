@@ -114,9 +114,13 @@ public class Estacionamento {
     }
 
     public void ExibirVeiculosEstacionados () {
-        Console.WriteLine("|            Veículos Estacionados:          |\n");
-        foreach (var veiculo in VeiculosEstacionados) {
-            veiculo.Exibir();
+        if (VeiculosEstacionados.Count > 0) {
+            Console.WriteLine("|            Veículos Estacionados:          |\n");
+                foreach (var veiculo in VeiculosEstacionados) {
+                veiculo.Exibir();
+            }
+        } else {
+            Console.WriteLine("Ainda não há veículos!");
         }
     }
 

@@ -59,7 +59,7 @@ public class LivroCaixa {
         Registro.Add(registro);
     }
 
-    public void ExibirLivroCaixa () {
+    public void Exibir () {
         foreach (var registro in Registro) {
             Console.WriteLine(registro);
         }

@@ -8,7 +8,7 @@ public class Veiculo {
     private DateTime Saida { get; set; }
 
     public Veiculo (string placa, string marca, string cor) {
-        Placa = placa;
+        Placa = placa.ToUpper();
         Marca = marca;
         Cor = cor;
         Entrada = DateTime.Now;

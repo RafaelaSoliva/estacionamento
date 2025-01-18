@@ -120,7 +120,7 @@ public class Estacionamento {
                 veiculo.Exibir();
             }
         } else {
-            Console.WriteLine("Ainda não há veículos!");
+            Console.WriteLine("\nAinda não há veículos!");
         }
     }
 

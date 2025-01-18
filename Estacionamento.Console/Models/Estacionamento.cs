@@ -6,11 +6,40 @@ public class Estacionamento {
     private decimal PrecoInicial { get; set; }
     private decimal PrecoPorHora { get; set; }
 
-    public Estacionamento (decimal precoInicial, decimal precoPorHora) {
+    public Estacionamento () {
         LivroCaixa = new LivroCaixa();
         VeiculosEstacionados = new List<Veiculo> ();
-        PrecoInicial = precoInicial;
-        PrecoPorHora = precoPorHora;
+        EntradaPrecoInicial();
+        EntradaPrecoPorHora();
+        Console.WriteLine("\nSistema iniciado com sucesso!\n");
+    }
+
+    private void EntradaPrecoInicial () {
+        Console.WriteLine("Informe o preço inicial a ser cobrado:");
+        string entradaUsuario = Console.ReadLine();
+        bool sucesso = Decimal.TryParse(entradaUsuario, out decimal precoInicial);
+
+        if (sucesso) {
+            PrecoInicial = precoInicial;
+        } else {
+            Console.WriteLine("\nValor inválido!");
+            Console.WriteLine("Utilize o formato xx.yy\n");
+            EntradaPrecoInicial();
+        }
+    }
+
+    private void EntradaPrecoPorHora () {
+        Console.WriteLine("Informe o preço a ser cobrado por hora:");
+        string entradaUsuario = Console.ReadLine();
+        bool sucesso = Decimal.TryParse(entradaUsuario, out decimal precoPorHora);
+
+        if (sucesso) {
+            PrecoPorHora = precoPorHora;
+        } else {
+            Console.WriteLine("\nValor inválido!");
+            Console.WriteLine("Utilize o formato xx.yy\n");
+            EntradaPrecoPorHora();
+        }
     }
 
     private bool VeiculoEstaEstacionado (string placa) {

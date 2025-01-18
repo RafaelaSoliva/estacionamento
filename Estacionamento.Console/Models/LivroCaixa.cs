@@ -13,9 +13,9 @@ public class LivroCaixa {
         Registro.Add("|     Data do Recibo    |      Valor     |            Descrição            |"); 
     }
 
-    private void SomarValor (decimal valorRecebido) {
-        TotalReceitas = TotalReceitas + valorRecebido;
-        ValorEmCaixa = ValorEmCaixa + valorRecebido;
+    private void SomarValor (decimal valorReceita) {
+        TotalReceitas = TotalReceitas + valorReceita;
+        ValorEmCaixa = ValorEmCaixa + valorReceita;
     }
 
     private void SubtrairValor (decimal valorDespesa) {
@@ -23,27 +23,27 @@ public class LivroCaixa {
         ValorEmCaixa = ValorEmCaixa - valorDespesa;
     }
 
-    public void RegistrarRecebimentoPorVeiculoEstacionado (decimal valorRecebido) {
+    public void RegistrarRecebimentoPorVeiculoEstacionado (decimal valorReceita) {
         // Registra a alteração dos valores
-        SomarValor(valorRecebido);
+        SomarValor(valorReceita);
 
         // Registra o horário do recebimento
         DateTime dataRecibo = DateTime.Now;
 
         // Adiciona registro ao LivroCaixa
-        string registro = $"|  {dataRecibo}  |  Valor: {valorRecebido}  |  Descrição: Veículo estacionado |";
+        string registro = $"|  {dataRecibo}  |  Valor: {valorReceita}  |  Descrição: Veículo estacionado |";
         Registro.Add(registro);
     }
 
-    public void RegistrarOutroRecebimento (decimal valorRecebido, string descricao) {
+    public void RegistrarOutroRecebimento (decimal valorReceita, string descricao) {
         // Registra a alteração dos valores
-        SomarValor(valorRecebido);
+        SomarValor(valorReceita);
 
         // Registra o horário do recebimento
         DateTime dataRecibo = DateTime.Now;
 
         // Adiciona registro ao LivroCaixa
-        string registro = $"|  {dataRecibo}  |  Valor: {valorRecebido}  |  Descrição: {descricao} |";
+        string registro = $"|  {dataRecibo}  |  Valor: {valorReceita}  |  Descrição: {descricao} |";
         Registro.Add(registro);
     }
 
@@ -64,7 +64,7 @@ public class LivroCaixa {
             Console.WriteLine(registro);
         }
 
-        Console.WriteLine($"\nGanhos totais: {TotalReceitas}");
+        Console.WriteLine($"\nReceitas totais: {TotalReceitas}");
         Console.WriteLine($"Despesas totais: {TotalDespesas}");
         Console.WriteLine($"\nValor em caixa: {ValorEmCaixa}");
     }

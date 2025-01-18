@@ -85,25 +85,27 @@ public class Estacionamento {
         // Recebe a placa do veiculo
         Console.WriteLine("Placa: ");
         string placa = Console.ReadLine();
+        placa = placa.ToUpper();
 
         // Verifica se a placa inserida pertence a um veículo estacionado
         if (VeiculoEstaEstacionado(placa)) {
             // Encontra o veículo na lista
-            Veiculo veiculoARemover = VeiculosEstacionados.Find(x => x.Placa == placa);
+            int posicaoVeiculo = VeiculosEstacionados.FindIndex(x => x.Placa == placa);
 
             // Calcula o valor a receber e exibe
-            decimal valorAReceber = veiculoARemover.CalcularValorAReceber(PrecoInicial, PrecoPorHora);
+            decimal valorAReceber = VeiculosEstacionados[posicaoVeiculo].CalcularValorAReceber(PrecoInicial, PrecoPorHora);
             Console.WriteLine($"Confirmar pagamento de R$ {valorAReceber}? - Pressione Enter");
             Console.ReadLine();
             
             // Registra a receita no livro caixa
             LivroCaixa.RegistrarReceitaPorVeiculoEstacionado(valorAReceber);
 
-            // Remove o veículo da lista
-            VeiculosEstacionados.Remove(veiculoARemover);
-
             // Retorna a confirmação para o usuário
-            Console.WriteLine($"Veículo placa {veiculoARemover.Placa} liberado!");
+            Console.WriteLine($"Veículo placa {VeiculosEstacionados[posicaoVeiculo].Placa} liberado!");
+            
+            // Remove o veículo da lista
+            VeiculosEstacionados.Remove(VeiculosEstacionados[posicaoVeiculo]);
+
         } else { // Caso a placa inserida não pertença a um veículo estacionado
             Console.WriteLine("Veículo não encontrado! Tentar novamente? (s/n)");
             string resposta = Console.ReadLine();

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection.PortableExecutable;
-using Models;
+﻿using Models;
 
 Console.Clear();
 

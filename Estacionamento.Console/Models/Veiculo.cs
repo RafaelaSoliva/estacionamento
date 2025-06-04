@@ -7,6 +7,8 @@ public class Veiculo {
     public DateTime Entrada { get; set; }
 
     public Veiculo (int tipo, string cor, string placa) {
+        // Tipo 1: Carro
+        // Tipo 2: Moto
         Tipo = tipo;
         Cor = cor;
         Placa = placa;

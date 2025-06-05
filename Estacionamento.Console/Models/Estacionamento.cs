@@ -1,4 +1,4 @@
-namespace Estacionamento.Models;
+namespace Models;
 
 public class Estacionamento {
     public List<Veiculo> CarrosEstacionados { get; set; }

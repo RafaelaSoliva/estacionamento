@@ -95,7 +95,7 @@ public class Estacionamento {
         }
     }
 
-    public bool RemoverCarro (string placa) {
+    public bool LiberarCarro (string placa) {
         if (!CarroEstaEstacionado(placa)) {
             throw new Exception("Veículo não registrado!");
         } else {

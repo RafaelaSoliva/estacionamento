@@ -55,9 +55,9 @@ public class Estacionamento {
 
     public void EstacionarCarro (string cor, string placa) {
         if (!TemEspacoParaCarro()) {
-            throw new Exception("Não há vagas.");
+            throw new ApplicationException("Erro: Não há vagas.");
         } else if (CarroEstaEstacionado(placa)) {
-            throw new Exception("Placa já registrada.");
+            throw new ApplicationException("Erro: Placa já registrada.");
         } else {
             Veiculo veiculo = new Veiculo(1, cor, placa);
         }
@@ -65,9 +65,9 @@ public class Estacionamento {
 
     public void EstacionarMoto (string cor, string placa) {
         if (!TemEspacoParaMoto()) {
-            throw new Exception("Não há vagas.");
+            throw new ApplicationException("Erro: Não há vagas.");
         } else if (MotoEstaEstacionada(placa)) {
-            throw new Exception("Placa já registrada.");
+            throw new ApplicationException("Erro: Placa já registrada.");
         } else {
             Veiculo veiculo = new Veiculo(2, cor, placa);
         }
@@ -75,7 +75,7 @@ public class Estacionamento {
 
     public decimal CalcularValorCarro (string placa) {
         if (!CarroEstaEstacionado(placa)) {
-            throw new Exception("Veículo não registrado!");
+            throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexCarro(placa);
             int horasEstacionadas = CarrosEstacionados[index].ObterHorasEstacionadas();
@@ -86,7 +86,7 @@ public class Estacionamento {
 
     public decimal CalcularValorMoto (string placa) {
         if (!MotoEstaEstacionada(placa)) {
-            throw new Exception("Veículo não registrado!");
+            throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexMoto(placa);
             int horasEstacionadas = MotosEstacionadas[index].ObterHorasEstacionadas();
@@ -97,7 +97,7 @@ public class Estacionamento {
 
     public bool LiberarCarro (string placa) {
         if (!CarroEstaEstacionado(placa)) {
-            throw new Exception("Veículo não registrado!");
+            throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexCarro(placa);
             CarrosEstacionados.Remove(CarrosEstacionados[index]);
@@ -107,7 +107,7 @@ public class Estacionamento {
 
     public bool LiberarMoto (string placa) {
         if (!MotoEstaEstacionada(placa)) {
-            throw new Exception("Veículo não registrado!");
+            throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexMoto(placa);
             MotosEstacionadas.Remove(MotosEstacionadas[index]);

@@ -10,8 +10,8 @@ public class Veiculo {
         // Tipo 1: Carro
         // Tipo 2: Moto
         Tipo = tipo;
-        Cor = cor;
-        Placa = placa;
+        Cor = cor.ToUpper();
+        Placa = placa.ToUpper();
         Entrada = DateTime.Now;
     }
 

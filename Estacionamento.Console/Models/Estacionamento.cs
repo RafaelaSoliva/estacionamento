@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 namespace Estacionamento.Models;
 
 public class Estacionamento {

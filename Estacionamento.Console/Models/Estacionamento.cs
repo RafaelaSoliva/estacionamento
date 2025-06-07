@@ -72,6 +72,16 @@ public class Estacionamento {
         }
     }
 
+    public int CalcularTempoEstacionamentoCarro (string placa) {
+        int index = ObterIndexCarro(placa);
+        return CarrosEstacionados[index].ObterHorasEstacionadas();
+    }
+
+    public int CalcularTempoEstacionamentoMoto (string placa) {
+        int index = ObterIndexMoto(placa);
+        return MotosEstacionadas[index].ObterHorasEstacionadas();
+    }
+
     public decimal CalcularValorCarro (string placa) {
         if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");

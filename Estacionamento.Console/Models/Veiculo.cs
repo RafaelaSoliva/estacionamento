@@ -6,10 +6,7 @@ public class Veiculo {
     public string Placa { get; set; }
     public DateTime Entrada { get; set; }
 
-    public Veiculo (int tipo, string cor, string placa) {
-        // Tipo 1: Carro
-        // Tipo 2: Moto
-        Tipo = tipo;
+    public Veiculo (string cor, string placa) {
         Cor = cor.ToUpper();
         Placa = placa.ToUpper();
         Entrada = DateTime.Now;

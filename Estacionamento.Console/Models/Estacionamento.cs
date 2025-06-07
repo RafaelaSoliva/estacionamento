@@ -37,12 +37,9 @@ public class Estacionamento {
         return MotosEstacionadas.Count < CapacidadeParaMotos;
     }
 
-    private bool CarroEstaEstacionado (string placa) {
-        return CarrosEstacionados.Exists(carro => carro.Placa == placa.ToUpper());
-    }
-
-    private bool MotoEstaEstacionada (string placa) {
-        return MotosEstacionadas.Exists(moto => moto.Placa == placa.ToUpper());
+    private bool VeiculoEstaEstacionado (string placa) {
+        return CarrosEstacionados.Exists(carro => carro.Placa == placa.ToUpper()) ||
+                                         MotosEstacionadas.Exists(moto => moto.Placa == placa.ToUpper());
     }
 
     private int ObterIndexCarro (string placa) {
@@ -56,25 +53,27 @@ public class Estacionamento {
     public void EstacionarCarro (string cor, string placa) {
         if (!TemEspacoParaCarro()) {
             throw new ApplicationException("Erro: Não há vagas.");
-        } else if (CarroEstaEstacionado(placa)) {
+        } else if (VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Placa já registrada.");
         } else {
-            Veiculo veiculo = new Veiculo(1, cor, placa);
+            Veiculo veiculo = new Veiculo(cor, placa);
+            CarrosEstacionados.Add(veiculo);
         }
     }
 
     public void EstacionarMoto (string cor, string placa) {
         if (!TemEspacoParaMoto()) {
             throw new ApplicationException("Erro: Não há vagas.");
-        } else if (MotoEstaEstacionada(placa)) {
+        } else if (VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Placa já registrada.");
         } else {
-            Veiculo veiculo = new Veiculo(2, cor, placa);
+            Veiculo veiculo = new Veiculo(cor, placa);
+            MotosEstacionadas.Add(veiculo);
         }
     }
 
     public decimal CalcularValorCarro (string placa) {
-        if (!CarroEstaEstacionado(placa)) {
+        if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexCarro(placa);
@@ -85,7 +84,7 @@ public class Estacionamento {
     }
 
     public decimal CalcularValorMoto (string placa) {
-        if (!MotoEstaEstacionada(placa)) {
+        if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexMoto(placa);
@@ -96,7 +95,7 @@ public class Estacionamento {
     }
 
     public bool LiberarCarro (string placa) {
-        if (!CarroEstaEstacionado(placa)) {
+        if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexCarro(placa);
@@ -106,7 +105,7 @@ public class Estacionamento {
     }
 
     public bool LiberarMoto (string placa) {
-        if (!MotoEstaEstacionada(placa)) {
+        if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
             int index = ObterIndexMoto(placa);

@@ -9,6 +9,7 @@ public class Estacionamento {
     public decimal ValorInicialMoto { get; set; }
     public decimal AdicionalPorHoraCarro { get; set; }
     public decimal AdicionalPorHoraMoto { get; set; }
+    public LivroCaixa LivroCaixa { get; set; }
 
     public Estacionamento (int capacidadeParaCarros, int capacidadeParaMotos,
                           decimal valorInicialCarro, decimal valorInicialMoto,
@@ -22,6 +23,7 @@ public class Estacionamento {
         AdicionalPorHoraMoto = adicionalPorHoraMoto;
         CarrosEstacionados = new List<Veiculo>(CapacidadeParaCarros);
         MotosEstacionadas = new List<Veiculo>(CapacidadeParaMotos);
+        LivroCaixa = new LivroCaixa();
     }
 
     public string ObterStatus () {
@@ -104,6 +106,16 @@ public class Estacionamento {
         }
     }
 
+    private void RegistrarPagamentoCarro (decimal valor) {
+        string descricao = $"Carro estacionado";
+        LivroCaixa.RegistrarReceita(valor, descricao);
+    }
+
+    private void RegistrarPagamentoMoto (decimal valor) {
+        string descricao = $"Moto estacionada";
+        LivroCaixa.RegistrarDespesa(valor, descricao);
+    }
+
     public void LiberarCarro (string placa, out int horasEstacionadas, out decimal valorDevido) {
         if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
@@ -111,6 +123,7 @@ public class Estacionamento {
             horasEstacionadas = CalcularTempoEstacionamentoCarro(placa);
             valorDevido = CalcularValorCarro(placa);
             int index = ObterIndexCarro(placa);
+            RegistrarPagamentoCarro(valorDevido);
             CarrosEstacionados.Remove(CarrosEstacionados[index]);
         }
     }
@@ -122,6 +135,7 @@ public class Estacionamento {
             horasEstacionadas = CalcularTempoEstacionamentoMoto(placa);
             valorDevido = CalcularValorMoto(placa);
             int index = ObterIndexMoto(placa);
+            RegistrarPagamentoMoto(valorDevido);
             MotosEstacionadas.Remove(MotosEstacionadas[index]);
         }
     }

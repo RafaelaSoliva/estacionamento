@@ -7,6 +7,8 @@ while (isRunning) {
     Console.Clear();
     Console.WriteLine("Estado:");
     Console.WriteLine(estacionamento.ObterStatus());
+
+    Console.WriteLine("\nEstacionamento:");
     
     if (estacionamento.CarrosEstacionados.Count == 0 && estacionamento.MotosEstacionadas.Count == 0) {
         Console.WriteLine("\nNão há veículos registrados.");
@@ -38,7 +40,15 @@ while (isRunning) {
         Console.WriteLine("5 - Liberar Moto\n");
     }
 
-    Console.WriteLine("6 - Encerrar (Os dados serão perdidos).\n");
+    Console.WriteLine("\nRegistro do caixa:");
+
+    Console.WriteLine("\n6 - Registrar Receita");
+    Console.WriteLine("7 - Registrar Despesa");
+    Console.WriteLine("8 - Exibir Registros do Caixa");
+
+    Console.WriteLine("\nEncerrar Programa:");
+
+    Console.WriteLine("\n9 - Encerrar (Os dados serão perdidos).\n");
 
     string entradaUsuario = Console.ReadLine();
 
@@ -183,6 +193,42 @@ while (isRunning) {
         } break;
 
         case "6": {
+            try {
+                Console.WriteLine("\nInforme o valor (Formato xx,yy):");
+                decimal valor = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Digite a descrição:");
+                string descricao = Console.ReadLine();
+                estacionamento.LivroCaixa.RegistrarReceita(valor, descricao);
+            } catch (Exception error) {
+                Console.WriteLine(error.Message);
+            } finally {
+                Console.WriteLine("\nPressione Enter para continuar..");
+                Console.ReadLine();
+            }
+        } break;
+
+        case "7": {
+            try {
+                Console.WriteLine("\nInforme o valor (Formato xx,yy):");
+                decimal valor = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Digite a descrição:");
+                string descricao = Console.ReadLine();
+                estacionamento.LivroCaixa.RegistrarDespesa(valor, descricao);
+            } catch (Exception error) {
+                Console.WriteLine(error.Message);
+            } finally {
+                Console.WriteLine("\nPressione Enter para continuar..");
+                Console.ReadLine();
+            }
+        } break;
+
+        case "8": {
+            estacionamento.LivroCaixa.Exibir();
+            Console.WriteLine("\nPressione Enter para continuar..");
+            Console.ReadLine();
+        } break;
+
+        case "9": {
             isRunning = false;
         } break;
 

@@ -104,25 +104,25 @@ public class Estacionamento {
         }
     }
 
-    public decimal LiberarCarro (string placa) {
+    public void LiberarCarro (string placa, out int horasEstacionadas, out decimal valorDevido) {
         if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
-            decimal valorDevido = CalcularValorCarro(placa);
+            horasEstacionadas = CalcularTempoEstacionamentoCarro(placa);
+            valorDevido = CalcularValorCarro(placa);
             int index = ObterIndexCarro(placa);
             CarrosEstacionados.Remove(CarrosEstacionados[index]);
-            return valorDevido;
         }
     }
 
-    public decimal LiberarMoto (string placa) {
+    public void LiberarMoto (string placa, out int horasEstacionadas, out decimal valorDevido) {
         if (!VeiculoEstaEstacionado(placa)) {
             throw new ApplicationException("Erro: Veículo não registrado!");
         } else {
-            decimal valorDevido = CalcularValorMoto(placa);
+            horasEstacionadas = CalcularTempoEstacionamentoMoto(placa);
+            valorDevido = CalcularValorMoto(placa);
             int index = ObterIndexMoto(placa);
             MotosEstacionadas.Remove(MotosEstacionadas[index]);
-            return valorDevido;
         }
     }
 }
